@@ -1,0 +1,4 @@
+export default {
+  GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+  INCREMENT: 'INCREMENT'
+}
