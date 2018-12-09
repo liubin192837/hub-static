@@ -18,12 +18,14 @@ export default {
   computed: {
     ...mapState('global', [
       'count',
+      'user'
     ])
   },
   methods: {
     ...mapActions('global', [
       'callApi'
     ]),
+    //tongbu
     ...mapMutations('global', {
       //onclick中直接使用increment方法名会默认传入event对象到payload
       increment: MUTATION.INCREMENT

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Form from './views/Form.vue'
+import Upload from './views/Upload.vue'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/form',
       name: 'form',
       component: Form
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: Upload
     },
   ]
 })
