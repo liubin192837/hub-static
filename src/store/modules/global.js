@@ -3,7 +3,9 @@ import global from '../../api/global'
 import { MUTATION } from '../../constants'
 // initial state
 const state = {
-  count: 0
+  count: 0,
+  data6: [],
+  current:1
 }
 
 // getters
@@ -15,6 +17,12 @@ const getters = {
 const actions = {
   async callApi({commit}){
     commit(MUTATION.GET_USER_SUCCESS, await global.getUserInfo())
+  },
+  async getMyAllFiles({ commit }){
+    commit(MUTATION.GET_MY_ALL_FILES_SUCCES, await global.getMyAllFiles())
+  },
+  async changePage({ commit },){
+
   }
 }
 
@@ -25,6 +33,9 @@ const mutations = {
   },
   [MUTATION.INCREMENT](state) {
     state.count = state.count + 1 
+  },
+  [MUTATION.GET_MY_ALL_FILES_SUCCES](state, payload){
+    state.data6 = payload
   }
 }
 
