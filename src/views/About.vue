@@ -8,7 +8,7 @@
         <Table border :columns="columns7" :data="data6.list"></Table>
         <div style="margin: 10px;overflow: hidden">
             <div style="float: right;">
-                <Page :total="40" :current="1" @on-change="changePage"></Page>
+                <Page :total="40" :current="1" @on-change="getMyAllFiles"></Page>
             </div>
         </div>
         <!--        <Button @click="handleSelectAll(true)">Prev</Button>
@@ -130,11 +130,12 @@ export default {
         },
         ...mapActions('global', [
             'getMyAllFiles'
-        ])
-        /* changePage() {
+        ]),
+/*        changePage(a,b,c) {
+            console.log('-------------ooooooooooooo'+" "+a+b );
             // The simulated data is changed directly here, and the actual usage scenario should fetch the data from the server
             //this.tableData1 = this.mockTableData1();
-        } */
+        }*/
     }
 }
 </script>

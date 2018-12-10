@@ -4,5 +4,6 @@
 
 export default {
   GET_USER: '/feapi/counter',
-  GET_MY_ALL_FILES: "/liu/getMyFileList"
+  GET_MY_ALL_FILES: "/liu/getMyFileList",
+  POST_LOGIN: "/liu/login"
 }
