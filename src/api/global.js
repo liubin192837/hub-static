@@ -13,8 +13,8 @@ export default {
     return Axios.get(API.GET_MY_ALL_FILES, { pageNumber })
   },
 
-  login(name,password){
-      console.log(name+" "+password);
-      return Axios.post(API.POST_LOGIN,{name,password})
+  login(params){
+    console.log(params);
+      return Axios.get(API.POST_LOGIN, params)
   }
 }

@@ -1,4 +1,5 @@
 <template>
+<div align="center">
     <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
         <FormItem prop="user">
             <Input type="text" v-model="formInline.user" placeholder="Username">
@@ -14,53 +15,60 @@
             <Button type="primary" @click="handleSubmit('formInline')">Signin</Button>
         </FormItem>
     </Form>
+</div>
 </template>
-<script>
-    /* eslint-disable */
-    import {
-        mapState,
-        mapMutations,
-        mapActions
-    } from 'vuex'
 
-    export default {
-        data() {
-            return {
-                formInline: {
-                    user: '',
-                    password: ''
-                },
-                ruleInline: {
-                    user: [
-                        {required: true, message: 'Please fill in the user name', trigger: 'blur'}
-                    ],
-                    password: [
-                        {required: true, message: 'Please fill in the password.', trigger: 'blur'},
-                        {
-                            type: 'string',
-                            min: 6,
-                            message: 'The password length cannot be less than 6 bits',
-                            trigger: 'blur'
-                        }
-                    ]
-                }
-            }
-        },
-        methods: {
-            handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('Success!');
-                        console.log('-------------this.data', this.$data);
-                        login(this.$data.formInline.user,this.$data.formInline.password)
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
-                })
+<script>
+/* eslint-disable */
+import {
+    mapState,
+    mapMutations,
+    mapActions
+} from 'vuex'
+
+export default {
+    data() {
+        return {
+            formInline: {
+                user: '',
+                password: ''
             },
-            ...mapActions('global', [
-                'login'
-            ]),
+            ruleInline: {
+                user: [{
+                    required: true,
+                    message: 'Please fill in the user name',
+                    trigger: 'blur'
+                }],
+                password: [{
+                        required: true,
+                        message: 'Please fill in the password.',
+                        trigger: 'blur'
+                    },
+                    {
+                        type: 'string',
+                        min: 6,
+                        message: 'The password length cannot be less than 6 bits',
+                        trigger: 'blur'
+                    }
+                ]
+            }
         }
+    },
+    methods: {
+        handleSubmit(name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    this.$Message.success('Success!');
+                    console.log('-------------this.data', this.$data);
+                    this.login(this.$data.formInline)
+                } else {
+                    this.$Message.error('Fail!');
+                }
+            })
+        },
+        ...mapActions('global', [
+            'login'
+        ]),
     }
+}
 </script>

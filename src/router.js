@@ -19,9 +19,9 @@ const router = new Router({
                     navBar: NavBar,
                     default: Home
                 },
-               /* meta: {
+               meta: {
                     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-                },*/
+                },
             },
             {
                 path: '/about',
@@ -32,14 +32,17 @@ const router = new Router({
                 components: {
                     navBar: NavBar,
                     default: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-                }
+                },
+                meta: {
+                    requireAuth: true, 
+                },
 
             },
             {
                 path: '/login',
                 name: 'login',
                 components: {
-                    navBar: NavBar,
+                    //navBar: NavBar,
                     default: Login
                 },
 
@@ -48,17 +51,22 @@ const router = new Router({
                 path: '/upload',
                 name: 'upload',
                 components: {
-                    //navBar: NavBar,
+                    navBar: NavBar,
                     default: Upload
-                }
+                },
+                meta: {
+                    requireAuth: true,
+                },
             },
         ]
     }
 )
 
 router.beforeEach((to, from, next) => {
+    console.log("..................beforeEach");
     if (to.meta.requireAuth) {
         if (Global.state.token) {
+            console.log("..................ok");
             next();
         } else {
             next({
@@ -70,7 +78,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-    // ...
 })
 
 export default router;

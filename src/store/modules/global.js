@@ -1,6 +1,7 @@
 /* eslint-disable */
 import global from '../../api/global'
 import {MUTATION} from '../../constants'
+import router from '../../router'
 // initial state
 const state = {
     count: 0,
@@ -26,9 +27,9 @@ const actions = {
         commit(MUTATION.GET_MY_ALL_FILES_SUCCES, await global.getMyAllFiles(pageNumber))
     },
 
-    async login ({commit},name,password){
+    async login ({commit}, payload){
         console.log('-------------this.data', name);
-        commit(MUTATION.POST_LOGIN_SUCCES,await global.login(name,password))
+        commit(MUTATION.POST_LOGIN_SUCCES, await global.login(payload))
     }
 }
 
@@ -46,8 +47,11 @@ const mutations = {
         state.current = data.allNumber
     },
     [MUTATION.POST_LOGIN_SUCCES](state, data) {
-        if (data.token != null) {
-            this.$router.push({path: '/home'});
+        console.log('-------------POST_LOGIN_SUCCES', data);
+        if (data.token) {
+            console.log('-------------POST_LOGIN_SUCCES token', data.token);
+            state.token = data.token;
+            router.push({path: '/'});
         }
 
     }
