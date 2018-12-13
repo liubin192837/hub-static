@@ -19,9 +19,9 @@ const router = new Router({
                     navBar: NavBar,
                     default: Home
                 },
-               meta: {
+              /* meta: {
                     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-                },
+                },*/
             },
             {
                 path: '/about',
@@ -33,9 +33,9 @@ const router = new Router({
                     navBar: NavBar,
                     default: () => import(/* webpackChunkName: "about" */ './views/About.vue')
                 },
-                meta: {
+                /*meta: {
                     requireAuth: true, 
-                },
+                },*/
 
             },
             {
@@ -54,9 +54,9 @@ const router = new Router({
                     navBar: NavBar,
                     default: Upload
                 },
-                meta: {
+  /*              meta: {
                     requireAuth: true,
-                },
+                },*/
             },
         ]
     }

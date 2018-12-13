@@ -13,10 +13,6 @@
         <Icon type="ios-construct" />
         Upload
         </MenuItem>
-        <MenuItem name="4" to="/login">
-        <Icon type="ios-construct" />
-        Login
-        </MenuItem>
     </Menu>
     <div class="logout">
         <Dropdown trigger="click" style="margin-left: 20px">
@@ -27,10 +23,11 @@
             <DropdownMenu slot="list">
                 <a href=""><DropdownItem>Logout</DropdownItem></a>
                 <a href=""><DropdownItem>Switch User</DropdownItem></a>
-                <a href=""><DropdownItem>Manage</DropdownItem></a>
+                <a href=""><DropdownItem  v-if="root">Manage</DropdownItem></a>
             </DropdownMenu>
         </Dropdown>
     </div>
+
 </div>
 </template>
 
@@ -46,4 +43,15 @@
     color: $font-color;
 }
 </style>
+
+<script>
+    import { mapState} from 'vuex'
+    export default {
+        computed: {
+            ...mapState('global', [
+                'root'
+            ])
+        }
+    }
+</script>
 

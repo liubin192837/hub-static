@@ -14,6 +14,21 @@
     }
 }
 
+.login{
+    position: absolute;
+    top: 0;
+    right: 0;
+    //background: #515a6e;
+    width: 97px;
+    height: 60px;
+    z-index: 901;
+    line-height: 60px;
+    color: rgba(255, 255, 255, 0.7);
+    &:hover{
+        color: $logout-font-color;
+    }
+}
+
 .logoutmu{
     font-size: 15px;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
