@@ -8,7 +8,8 @@ const state = {
     data6: [],
     current: 1,
     token: null,
-    root:null,
+    isRoot: null,
+    isLogin: null
 }
 
 // getters
@@ -32,10 +33,19 @@ const actions = {
         commit(MUTATION.POST_LOGIN_SUCCES, await global.login(payload))
     },
 
-    async logout ({commit}){
-        commit(MUTATION.POST_LOGIN_SUCCES, await global.logout())
-    }
+    async checkLogin({ commit }) {
+        console.log('-------------checkLogin');
+        commit(MUTATION.POST_CHECK_LOGIN_SUCCES, await global.checkLogin())
+    },
 
+    async logout ({commit}){
+        //debugger;
+        commit(MUTATION.LOGOUT_SUCCES, await global.logout())
+    },
+
+    async addUser({ commit }, payload) {
+        commit(MUTATION.ADD_USER_SUCCES, await global.addUser(payload))
+    }
 }
 
 // mutations
@@ -53,19 +63,43 @@ const mutations = {
     },
     [MUTATION.POST_LOGIN_SUCCES](state, data) {
         console.log('-------------POST_LOGIN_SUCCES', data);
-        if (data.token) {
-            console.log('-------------POST_LOGIN_SUCCES token', data.token);
-            state.token = data.token;
+        if (data.login) {
+            console.log('-------------POST_LOGIN_SUCCES token', data);
+            state.isLogin = data.login;
+            state.isRoot = data.root;
             router.push({path: '/'});
+        } else {
+            alert('Login Error');
         }
 
     },
-    [MUTATION.POST_LOGIN_SUCCES](state, data) {
-        if (!data.token) {
-            state.token = null;
-            router.push({path: '/login'});
+    [MUTATION.POST_CHECK_LOGIN_SUCCES] (state, data){
+        console.log('-------POST_CHECK_LOGIN_SUCCES-------------', data);
+        if (data.login) {
+            state.isLogin = data.login;
+            state.isRoot = data.root;
+        } else {
+            router.push({ path: '/login' });
         }
     },
+    [MUTATION.LOGOUT_SUCCES](state, data) {
+        console.log('-----------------------', data);
+        if (data) {
+            state.isLogin = null;
+            state.root = null;
+            router.push({path: '/login'});
+        } else {
+            alert('Logout Error');
+        }
+    },
+    [MUTATION.ADD_USER_SUCCES](state, data) {
+        console.log('-----------------------', data);
+        if (data.ok){
+            alert('Add Success');
+        } else {
+            alert('Add Error');
+        }
+    }
 }
 
 export default {

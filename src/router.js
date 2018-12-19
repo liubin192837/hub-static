@@ -19,9 +19,9 @@ const router = new Router({
                     navBar: NavBar,
                     default: Home
                 },
-              /* meta: {
+/*                 meta: {
                     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-                },*/
+                }, */
             },
             {
                 path: '/about',
@@ -62,10 +62,11 @@ const router = new Router({
     }
 )
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
     console.log("..................beforeEach");
     if (to.meta.requireAuth) {
-        if (Global.state.token) {
+        sessionStorage.setItem();
+        if (Global.state.isLogin) {
             console.log("..................ok");
             next();
         } else {
@@ -78,6 +79,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-})
+}) */
 
 export default router;

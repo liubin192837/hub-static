@@ -15,15 +15,14 @@
         </MenuItem>
     </Menu>
     <div class="logout">
-        <Dropdown trigger="click" style="margin-left: 20px">
+        <Dropdown trigger="click" style="margin-left: 20px" @on-click="logout">
             <a href="javascript:void(0)" class="logoutmu">
-            Logout
-            <Icon type="ios-arrow-down"></Icon>
-        </a>
+                Logout
+                <Icon type="ios-arrow-down" ></Icon>
+           </a>
             <DropdownMenu slot="list">
-                <a href=""><DropdownItem>Logout</DropdownItem></a>
-                <a href=""><DropdownItem>Switch User</DropdownItem></a>
-                <a href=""><DropdownItem  v-if="root">Manage</DropdownItem></a>
+                <DropdownItem>Logout</DropdownItem>
+                <DropdownItem v-if="isRoot">Manage</DropdownItem>
             </DropdownMenu>
         </Dropdown>
     </div>
@@ -45,13 +44,27 @@
 </style>
 
 <script>
-    import { mapState} from 'vuex'
-    export default {
-        computed: {
-            ...mapState('global', [
-                'root'
-            ])
+import {
+    mapState,
+    mapActions
+} from 'vuex'
+export default {
+    created: function () {
+        if (!this.isLogin) {
+            this.checkLogin()
         }
+    },
+    computed: {
+        ...mapState('global', [
+            'isRoot',
+            'isLogin'
+        ])
+    },
+    methods: {
+        ...mapActions('global', [
+            'logout',
+            'checkLogin'
+        ]),
     }
+}
 </script>
-

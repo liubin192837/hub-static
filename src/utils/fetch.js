@@ -10,6 +10,10 @@ export default {
         'content-Type': 'application/json'
       },
       withCredentials: true,
+     /*  timeout: 1500, */
+      validateStatus: function (status) {
+        return status >= 200 && status < 300;
+      }
     }).then((res) => {
       return res.data;
     })
@@ -21,9 +25,13 @@ export default {
         'content-Type': 'application/json'
       },
       withCredentials: true,
+   /*    timeout: 1500, */
+      validateStatus:function(status) {
+        return status>=200 && status < 300;
+      }
     }).then((res) => {
       return res.data;
-    })
+      })
   }
 }
 

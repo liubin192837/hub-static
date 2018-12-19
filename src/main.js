@@ -10,17 +10,15 @@ Vue.config.productionTip = false
 
 axios.interceptors.response.use((data) => {// 响应成功关闭loading
   console.log('------------------response',data)
-  if (data.status = "401" || data.data.token){
-    console.log('------------------response', data.data.token + " ///" + (data.data.token!=null))
+  if (data.status = "401"){
+    store.state.isLogin=null;
+    store.state.isRoot = null;
+/*     console.log('------------------response', data.data.token + " ///" + (data.data.token!=null)); */
     router.push({ path: '/login' });
-  } else {
-
   }
   return data
 }, (error) => {
-  Message.error({
-    message: '加载失败'
-  })
+  alert('加载失败')
   return Promise.reject(error)
 })
 

@@ -1,8 +1,3 @@
-<!--<template>
-<div class="about">
-    <h1>This is an about page</h1>
-</div>
-</template> -->
 <template>
     <div>
         <Table border :columns="columns7" :data="data6.list"></Table>
@@ -17,7 +12,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import {
     mapState,
     mapMutations,
@@ -30,7 +24,7 @@ export default {
         ])
     },
     created() {
-        console.log('-------------ooooooooooooo')
+        console.log('-------------getMyAllFiles')
         this.getMyAllFiles()
     },
     data() {
@@ -131,11 +125,6 @@ export default {
         ...mapActions('global', [
             'getMyAllFiles'
         ]),
-/*        changePage(a,b,c) {
-            console.log('-------------ooooooooooooo'+" "+a+b );
-            // The simulated data is changed directly here, and the actual usage scenario should fetch the data from the server
-            //this.tableData1 = this.mockTableData1();
-        }*/
     }
 }
 </script>

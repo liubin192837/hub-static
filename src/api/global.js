@@ -14,7 +14,18 @@ export default {
   },
 
   login(params){
-    console.log(params);
-      return Axios.get(API.POST_LOGIN, params)
+      return Axios.post(API.POST_LOGIN, params)
+  },
+
+  checkLogin(){
+    return Axios.post(API.CHECK_LOGIN)
+  },
+  
+  logout(){
+    return Axios.get(API.GET_LOGOUT)
+  },
+
+  addUser(params){
+    return Axios.post(API.ADD_USER, params)
   }
 }

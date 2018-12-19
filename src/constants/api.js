@@ -3,8 +3,9 @@
 // }
 
 export default {
-  GET_USER: '/feapi/counter',
   GET_MY_ALL_FILES: "/liu/getMyFileList",
   POST_LOGIN: "/liu/login",
-    GTE_LOGOUT: "/liu/logout"
+  GET_LOGOUT: "/liu/logout",
+  CHECK_LOGIN: "/liu/checkLogin",
+  ADD_USER: "/liu/addUser"
 }
