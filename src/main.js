@@ -19,6 +19,9 @@ axios.interceptors.response.use((data) => {
 }, (error) => {
     console.log('------------------response error',error)
   alert(error)
+  if (!store.state.isLogin) {
+    router.push({ path: '/login' });
+  }
   return Promise.reject(error)
 })
 
