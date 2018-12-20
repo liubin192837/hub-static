@@ -16,7 +16,9 @@
   </Form>
 </template>
 <script>
-    /* eslint-disable */
+    import {
+        mapActions
+    } from 'vuex'
   export default {
     data () {
       return {
@@ -36,19 +38,9 @@
       }
     },
     methods: {
-         ...mapActions('global', [
+        ...mapActions('global', [
             'addUser'
         ]),
-/*       handleSubmit(name) {
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            this.$Message.success('Success!');
-            console.log('-------------this.data', this.$data)
-          } else {
-            this.$Message.error('Fail!');
-          }
-        })
-      } */
     }
   }
 </script>

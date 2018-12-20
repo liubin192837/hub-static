@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Upload from './views/Upload.vue'
 import NavBar from './views/NavBar.vue'
+import AddUser from './views/AddUser.vue'
 import Global from './store/modules/global'
 
 Vue.use(Router)
@@ -19,9 +20,6 @@ const router = new Router({
                     navBar: NavBar,
                     default: Home
                 },
-/*                 meta: {
-                    requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-                }, */
             },
             {
                 path: '/about',
@@ -33,9 +31,6 @@ const router = new Router({
                     navBar: NavBar,
                     default: () => import(/* webpackChunkName: "about" */ './views/About.vue')
                 },
-                /*meta: {
-                    requireAuth: true, 
-                },*/
 
             },
             {
@@ -54,9 +49,15 @@ const router = new Router({
                     navBar: NavBar,
                     default: Upload
                 },
-  /*              meta: {
-                    requireAuth: true,
-                },*/
+            },
+            {
+                path: '/addUser',
+                name: 'addUser',
+                components: {
+                    navBar: NavBar,
+                    default: AddUser
+                },
+
             },
         ]
     }

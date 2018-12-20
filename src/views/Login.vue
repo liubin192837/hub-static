@@ -54,11 +54,21 @@ export default {
             }
         }
     },
+    computed: {
+        get: function(){
+            console.log('-------------asdasdasd')
+            if(!this.isLogin){
+                alert("Login error")
+            }
+            return this.classJudge
+        },
+    },
+
     methods: {
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$Message.success('Success!');
+                    //this.$Message.success('Success!');
                     console.log('-------------this.data', this.$data);
                     this.login(this.$data.formInline)
                 } else {
@@ -68,6 +78,9 @@ export default {
         },
         ...mapActions('global', [
             'login'
+        ]),
+        ...mapState('global', [
+            'isLogin'
         ]),
     }
 }

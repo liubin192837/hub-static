@@ -8,17 +8,17 @@ import './plugins/iview.js'
 
 Vue.config.productionTip = false
 
-axios.interceptors.response.use((data) => {// 响应成功关闭loading
+axios.interceptors.response.use((data) => {
   console.log('------------------response',data)
   if (data.status = "401"){
     store.state.isLogin=null;
     store.state.isRoot = null;
-/*     console.log('------------------response', data.data.token + " ///" + (data.data.token!=null)); */
     router.push({ path: '/login' });
   }
   return data
 }, (error) => {
-  alert('加载失败')
+    console.log('------------------response error',error)
+  alert(error)
   return Promise.reject(error)
 })
 
