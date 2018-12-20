@@ -15,14 +15,14 @@
         </MenuItem>
     </Menu>
     <div class="logout">
-        <Dropdown trigger="click" style="margin-left: 20px" @on-click="logout">
+        <Dropdown trigger="click" style="margin-left: 20px">
             <a href="javascript:void(0)" class="logoutmu">
                 Logout
                 <Icon type="ios-arrow-down" ></Icon>
            </a>
             <DropdownMenu slot="list">
-                <DropdownItem>Logout</DropdownItem>
-                <DropdownItem v-if="isRoot">Manage</DropdownItem>
+                <DropdownItem @on-click="logout">Logout</DropdownItem>
+                <DropdownItem v-if="true" to="/addUser">Add User</DropdownItem>
             </DropdownMenu>
         </Dropdown>
     </div>
@@ -50,9 +50,9 @@ import {
 } from 'vuex'
 export default {
     created: function () {
-        if (!this.isLogin) {
+      /*  if (!this.isLogin) {
             this.checkLogin()
-        }
+        }*/
     },
     computed: {
         ...mapState('global', [
